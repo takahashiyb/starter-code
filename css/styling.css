@@ -16,8 +16,7 @@ body {
 .wrapper-display-category {
   cursor: pointer;
 }
-
-.button-choice[data-selected="true"] {
+"&lt!-- this is a comment --&gt" .button-choice[data-selected="true"] {
   .letter-button-choice {
     background-color: red;
   }
