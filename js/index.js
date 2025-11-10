@@ -1,3 +1,13 @@
+const query = window.location.search;
+
+const param = new URLSearchParams(query);
+
+const score = param.get("score");
+
+const key = param.get("key");
+
+const theme = param.get("theme");
+
 loadCategories();
 
 function loadCategories() {

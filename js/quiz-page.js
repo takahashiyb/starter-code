@@ -1,9 +1,11 @@
+import { displayCategoryHeader } from "./general.js";
+
 const query = window.location.search;
 
-const params = new URLSearchParams(query);
+const param = new URLSearchParams(query);
 
-const key = params.get("key");
-const theme = params.get("theme");
+const key = param.get("key");
+const theme = param.get("theme");
 
 let current = 0;
 
@@ -39,15 +41,7 @@ function loadPage() {
         (object) => object.title.toLowerCase() === key
       );
 
-      console.log(object);
-
-      const title = document.querySelector("h1");
-
-      title.innerHTML = object.title;
-
-      const titleImage = document.querySelector(".header-page img");
-
-      titleImage.src = `.${object.icon}`;
+      displayCategoryHeader(object);
 
       const questions = object.questions;
 
@@ -133,7 +127,7 @@ function assignButtonSubmitAnswer() {
     if (current < 10) {
       loadQuestion();
     } else {
-      window.location = `./score-page.html?score=${score}`;
+      window.location = `./score-page.html?score=${score}&key=${key}&${theme}`;
     }
   });
 }
