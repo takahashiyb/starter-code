@@ -25,7 +25,12 @@ function loadPage() {
         (object) => object.title.toLowerCase() === key
       );
 
-      displayCategoryHeader(object);
+      const header = document.querySelector(".header-page");
+
+      const body = document.querySelector(".container-display-score");
+
+      displayCategoryHeader(object, header);
+      displayCategoryHeader(object, body);
       delegateButtonPlayAgain();
     });
 }

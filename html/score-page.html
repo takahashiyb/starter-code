@@ -20,7 +20,7 @@
     <header class="header-page header-with-category">
       <div id="wrapper-display-category" class="wrapper-display-category">
         <img src="../assets/images/icon-html.svg" alt="" />
-        <h1 class="font-color-1">HTML</h1>
+        <h1 class="font-color-1 category-name">HTML</h1>
       </div>
       <div
         id="wrapper-switch-color-mode"
@@ -36,21 +36,23 @@
       </div>
     </header>
     <main class="wrapper-main-content">
-      <header>
-        <p class="font-color-1">Quiz completed</p>
-        <h2 class="font-color-1">You scored...</h2>
+      <header class="container-question">
+        <p class="font-color-1 pre-text">Quiz completed</p>
+        <h2 class="font-color-1 page-score-h2">You scored...</h2>
       </header>
-      <div>
+      <div class="container-score">
         <div class="container-display-score">
           <div class="wrapper-display-category">
             <img src="../assets/images/icon-html.svg" alt="" />
-            <h3 class="font-color-1">HTML</h3>
+            <h3 class="font-color-1 category-name">HTML</h3>
           </div>
-          <p id="indicator-score" class="font-color-1">8</p>
-          <p class="font-color-2">out of <span>10</span></p>
+          <p id="indicator-score" class="font-color-1 score">8</p>
+          <p class="font-color-2 score-total">out of <span>10</span></p>
         </div>
 
-        <button id="button-play-again" type="button">Play Again</button>
+        <button id="button-play-again" class="button-submit" type="button">
+          Play Again
+        </button>
       </div>
     </main>
     <script src="../js/score-page.js" type="module"></script>

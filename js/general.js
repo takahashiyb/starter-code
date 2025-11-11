@@ -4,16 +4,16 @@ const param = new URLSearchParams(query);
 
 const theme = param.get("theme");
 
-export function displayCategoryHeader(object) {
-  const title = document.querySelector("h1");
+export function displayCategoryHeader(object, parent) {
+  const container = parent.querySelector(".wrapper-display-category");
+
+  const title = container.querySelector(".category-name");
 
   title.innerHTML = object.title;
 
-  const header = document.getElementById("wrapper-display-category");
+  container.classList.add(object.title.toLowerCase());
 
-  header.classList.add(object.title.toLowerCase());
-
-  const titleImage = document.querySelector(".header-page img");
+  const titleImage = container.querySelector("img");
 
   titleImage.src = `.${object.icon}`;
 }

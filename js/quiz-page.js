@@ -40,7 +40,9 @@ function loadPage() {
         (object) => object.title.toLowerCase() === key
       );
 
-      displayCategoryHeader(object);
+      const header = document.querySelector(".header-page");
+
+      displayCategoryHeader(object, header);
 
       const questions = object.questions;
 
@@ -97,9 +99,12 @@ function loadQuestion() {
     const submit = document.getElementById("submit-button");
 
     button.addEventListener("click", function () {
+      const button = document.getElementById("submit-button");
       const elementError = document.getElementById("no-answer");
       elementError.setAttribute("hidden", "");
       elementError.setAttribute("inert", "");
+
+      button.classList.remove("inactive");
 
       const fieldset = document.getElementById("wrapper-button-choice");
 

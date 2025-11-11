@@ -70,6 +70,7 @@ html {
   --color-bg-bar-progress-light: var(--white);
 
   --justify-content-switch-theme-light: start;
+  --switch-color-img-light: brightness(0);
 
   --font-color-1-light: var(--blue-900);
   --font-color-2-light: var(--grey-500);
@@ -80,6 +81,7 @@ html {
   --color-bg-bar-progress-dark: var(--blue-850);
 
   --justify-content-switch-theme-dark: end;
+  --switch-color-img-dark: brightness(100);
 
   --font-color-1-dark: var(--white);
   --font-color-2-dark: var(--blue-300);
@@ -91,6 +93,8 @@ body {
   --background-color-body: var(--background-color-body-light);
   --background-color-button-choice: var(--background-color-button-choice-light);
   --justify-content-switch-theme: var(--justify-content-switch-theme-light);
+
+  --switch-color-img: var(--switch-color-img-light);
   --font-color-1: var(--font-color-1-light);
   --font-color-2: var(--font-color-2-light);
   --color-bg-bar-progress: var(--color-bg-bar-progress-light);
@@ -102,6 +106,8 @@ body.dark {
   --background-color-body: var(--background-color-body-dark);
   --background-color-button-choice: var(--background-color-button-choice-dark);
   --justify-content-switch-theme: var(--justify-content-switch-theme-dark);
+
+  --switch-color-img: var(--switch-color-img-dark);
   --font-color-1: var(--font-color-1-dark);
   --font-color-2: var(--font-color-2-dark);
   --color-bg-bar-progress: var(--color-bg-bar-progress-dark);
@@ -110,6 +116,7 @@ body.dark {
 .button-choice,
 .container-display-score {
   background-color: var(--background-color-button-choice);
+  border-radius: 12px;
 }
 
 .font-color-1,
@@ -153,13 +160,9 @@ body.dark {
 
 /* For Styling */
 
-body {
-  padding: 50px;
-}
-
 .wrapper-switch-color-mode {
   img {
-    filter: brightness(100);
+    filter: switch-color-img;
     height: 100%;
   }
 
@@ -174,7 +177,6 @@ body {
 }
 
 .button-choice {
-  border-radius: 12px;
   cursor: pointer;
   border: none;
 }
@@ -256,6 +258,10 @@ body {
 
 /* Font */
 
+.score {
+  font: var(--font-1-medium-mobile);
+}
+
 .pre-text {
   font: var(--font-2-light-mobile);
 }
@@ -264,7 +270,8 @@ h2 {
   font: var(--font-3-medium-mobile);
 }
 
-.section-main-header h1 {
+.section-main-header h1,
+.page-score-h2 {
   font: var(--font-2-medium-mobile);
 }
 
@@ -273,15 +280,22 @@ h2 {
   font: var(--font-5-italic-mobile);
 }
 
+.score-total {
+  font: var(--font-4-medium-mobile);
+  font-weight: 300;
+}
+
 .header-page h1,
 .button-choice,
 .button-submit,
-.no-answer {
+.no-answer,
+.category-name {
   font: var(--font-4-medium-mobile);
 }
 
 @media (min-width: 51.56rem) {
-  .pre-text {
+  .pre-text,
+  .category-name {
     font: var(--font-2-light);
   }
 
