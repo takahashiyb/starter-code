@@ -12,8 +12,10 @@ let questionsArray = [];
 
 let score = 0;
 
+// Run
 loadPage();
 
+// Handles the shuffling of questions and answers when called
 function shuffle(array) {
   // Make a copy if you don’t want to mutate the original
   const arr = array.slice();
@@ -29,6 +31,7 @@ function shuffle(array) {
   return arr;
 }
 
+// Initial Page Loader - Shuffles Questions then Load the first in queue
 function loadPage() {
   fetch("../data.json")
     .then((response) => {
@@ -55,6 +58,7 @@ function loadPage() {
     });
 }
 
+// Loads the questions an choices
 function loadQuestion() {
   const indicatorCurrent = document.getElementById("question-current");
   indicatorCurrent.innerHTML = current + 1;
@@ -65,13 +69,13 @@ function loadQuestion() {
   const questionDetail = document.querySelector("h2");
   questionDetail.innerHTML = questionsArray[current].question;
 
+  const fieldset = document.getElementById("wrapper-button-choice");
+
   const options = questionsArray[current].options;
 
   let copyOptions = [...options];
 
   copyOptions = shuffle(copyOptions);
-
-  const fieldset = document.getElementById("wrapper-button-choice");
 
   fieldset.dataset.choice = "";
 
@@ -98,6 +102,7 @@ function loadQuestion() {
 
     const submit = document.getElementById("submit-button");
 
+    // Adds the click function for an option to be selected
     button.addEventListener("click", function () {
       const button = document.getElementById("submit-button");
       const elementError = document.getElementById("no-answer");
@@ -127,12 +132,15 @@ function loadQuestion() {
   assignButtonSubmitAnswer();
 }
 
+// Assigns the function for submitting answer
 function assignButtonSubmitAnswer() {
   const button = document.getElementById("submit-button");
   button.removeEventListener("click", loadQuestion);
   button.addEventListener("click", markAnswerSubmitted);
+  button.innerHTML = "Submit Answer";
 }
 
+// Checks whether: there is an answer, if the answer is correct, show correct answer when the chose answer is wrong,
 function markAnswerSubmitted() {
   const elementChoiceName = document.getElementById("wrapper-button-choice")
     .dataset.choice;
@@ -187,12 +195,17 @@ function markAnswerSubmitted() {
   }
 
   current++;
-  const button = document.getElementById("submit-button");
 
   const percent = (current / questionsArray.length) * 100;
 
-  const bar = document.getElementById("bar-progress");
-  bar.style.setProperty("--progress", `${percent}%`);
+  updateFunctionForButtonSubmitAnswer(current);
+
+  updateProgressBar(percent);
+}
+
+// Switches the button functions to non-interactible, load next question, depending on the chosen answer, and switches to loading score page when there are no questions left
+function updateFunctionForButtonSubmitAnswer() {
+  const button = document.getElementById("submit-button");
 
   if (current < 10) {
     button.innerHTML = "Next Question";
@@ -205,4 +218,10 @@ function markAnswerSubmitted() {
       window.location = `./score-page.html?score=${score}&key=${key}&theme=${sendThemePageExit()}`;
     });
   }
+}
+
+// Handles the display for progress bar
+function updateProgressBar(percent) {
+  const bar = document.getElementById("bar-progress");
+  bar.style.setProperty("--progress", `${percent}%`);
 }

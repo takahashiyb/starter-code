@@ -12,8 +12,10 @@ const indicatorScore = document.getElementById("indicator-score");
 
 indicatorScore.innerHTML = score;
 
+// Run
 loadPage();
 
+// Loads page
 function loadPage() {
   fetch("../data.json")
     .then((response) => {
